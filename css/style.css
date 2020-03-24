@@ -1,3 +1,6 @@
+*:focus {
+    outline: 0;
+}
 @media (max-width: 479px) and (min-width: 320px) {
 
     body
@@ -29,15 +32,21 @@
         /* background-color: red; */
         text-align: center;
     }
+    .vidas
+    {
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    }
     .nivel-content
     {
         background: #cecece; 
     }
     .nivel
     {
-        width: 0%;
+        width: 50%;
         color: #fff;
-        margin: 0 auto;
+        /* margin: 0 auto; */
         background: rgb(40,181,101);
         background: linear-gradient(90deg, rgba(40,181,101,1) 37%, rgba(171,224,137,1) 100%);
     }
@@ -190,4 +199,93 @@
         border-left: 1px solid white;
         border-right: 1px solid white;
       }
+      /*----------------------SWIPER 3 PERFIL --------------------------*/
+      .bg-g{
+        background: white;
+    }
+    .perfil-puntos{
+        background: white;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        font-family: 'Lilita One';
+    }
+    .perfil-puntos > div {
+        display: flex;
+        margin: 5px;
+    }
+    
+    
+    .w-50{
+        width: 50%;
+        /* text-align: center; */
+        /* padding: 5px; */
+        margin: 5px;
+        background: #eee;
+    }
+      /*----------------------SWIPER 4 RANKING-------------------*/
+      .leaderBoard{
+        margin: 5px;
+        padding: 5px;
+        background: white;
+    }
+    .lb-titulo{
+        display: flex;
+        justify-content: center;
+        font-size: 25px;
+    }
+    .lb-header {
+        font-family: 'Lilita One';
+        margin: 7px;
+        background: #03a9f4;
+        padding: .6em .8em .8em;
+        color: white;
+        margin: 5px;
+        cursor: pointer;
+        outline: 0;
+        transition: .2s;
+        will-change: transform;
+    }
+    .lb-datos{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background: white;
+        
+    }
+    .lb-medallas{
+        width: 20%;
+        margin: 0 auto;
+        text-align: center;
+        background: white;
+    }
+    .lb-medallas > div{
+        margin: 5px;
+        color: white;
+        background: #009432;
+    }
+    #tablaNombres > div{
+        margin: 5px;
+        color: white;
+        background: #03a9f4;
+        font-size: 16px;
+    }
+    #tablaPuntos > div{
+        margin: 5px;
+        color: white;
+        background: #ff6600;
+        font-family: 'Lilita One';
+    }
+    .lb-tablaNP{
+        display: flex;
+        width: 80%;
+    }
+    .lb-tablaNP > div:first-child{
+        width: 70%;
+        text-align: center;
+    }
+    .lb-tablaNP > div:last-child{
+        width: 30%;
+        text-align: center;
+    }
 }

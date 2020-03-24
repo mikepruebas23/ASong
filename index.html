@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff6600" />
     <title>Adivina</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -25,25 +26,10 @@
         </div>
     </header>
 
-    <div class="estadisticas card">
-        <div class="nivel-content">
-            <div class="nivel" id="nivel">0</div>
-        </div>
-    </div>
+   
         
-    </div>
-    <div class="card">
-        <p class="frase" id="frase"></p>
-        <div class="progress">
-            <div class="progress-bar" id="pb"></div>
-        </div>
-    </div>
-
+   
     
-    <div class="c-buttons">
-        <button class="btn0" onclick="selectFrase(this);"></button>
-        <button class="btn1" onclick="selectFrase(this);"></button>
-    </div> -->
     
     
 <!-- Swiper -->
@@ -59,6 +45,15 @@
                     <div id="timer">00:05</div>
                 </div>
             </header>
+            <div class="estadisticas card">
+                <div class="vidas">
+                    <div id="vidas">3</div>
+                    <div><i class="fas fa-heart"></i></div>
+                </div>
+                <div class="nivel-content">
+                    <div class="nivel" id="nivel">50%</div>
+                </div>
+            </div>
             <div class="card">
                 <p class="frase" id="frase"></p>
                 <div class="progress">
@@ -87,7 +82,7 @@
                     <div class="w-50">Mis puntos:</div>
                     <div class="w-50" id="contadorDos">0</div>
                 </div>
-                <button class="btn btn1" style="margin: 0 auto;" id="btn-incremento">GUARDAR</button>
+                <!-- <button class="btn btn1" style="margin: 0 auto;" id="btn-incremento">GUARDAR</button> -->
             </div>
         </div>
         <div class="swiper-slide">
@@ -104,8 +99,12 @@
                         <div>&#129353;</div>
                     </div>
                     <div class="lb-tablaNP">
-                        <div id="tablaNombres"></div>
-                        <div id="tablaPuntos"></div>
+                        <div id="tablaNombres">
+                            <div>mike</div>
+                        </div>
+                        <div id="tablaPuntos">
+                            <div>10</div>
+                        </div>
                     </div>
                 </div>
             </div> 

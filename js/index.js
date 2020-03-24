@@ -168,6 +168,7 @@ function notiERR()
         text: "<i class='fas fa-times'></i>",
         gravity: "bottom",
         position: 'left',
+        // top: "85px",
         // duration: 100000,
         backgroundColor: '#EA2027',
     }).showToast();
