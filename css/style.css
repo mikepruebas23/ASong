@@ -1,0 +1,193 @@
+@media (max-width: 479px) and (min-width: 320px) {
+
+    body
+    {
+        background-color: #f3f3f3;
+    }
+    .header
+    {
+        background-color: white;
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 25px;
+        font-size: 20px;
+        font-family: 'Roboto';
+    }
+    .points,#points
+    {
+        width: 35%;
+        /* background-color: blue; */
+        text-align: center;
+        border: none;
+    }
+    .time
+    {
+        width: 30%;
+        /* background-color: red; */
+        text-align: center;
+    }
+    .nivel-content
+    {
+        background: #cecece; 
+    }
+    .nivel
+    {
+        width: 0%;
+        color: #fff;
+        margin: 0 auto;
+        background: rgb(40,181,101);
+        background: linear-gradient(90deg, rgba(40,181,101,1) 37%, rgba(171,224,137,1) 100%);
+    }
+    .card
+    {
+        /* display: none; */
+        background-color: white;
+        /* padding: 5px; */
+        color: gray;
+        margin: 5px auto;
+        width: 90%;
+        text-align: center;
+    }
+    .frase
+    {
+        padding: 10px;
+    }
+    .progress
+    {
+        /* padding: 5px; */
+        /* width: 90%; */
+        /* margin: 5px auto; */
+        background: #cecece; 
+
+    } 
+    
+    .progress-bar
+    {
+        background-color: #03a9f4;
+        width: 100%;
+        height: 15px;
+        transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+        /* border-radius: 10px; */
+    }
+    .c-buttons
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: white; */
+        padding: 5px;
+        text-align: center;
+    }
+    .c-buttons > button 
+    {
+        color: white;
+        width: 50%;
+        margin:0 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 2px;
+        background-color: #03a9f4;
+        padding: 10px;
+    }
+    .c-buttons > button:active 
+    {
+        transform: scale(0.9);
+    }
+    .seleccion {
+        height: 100vh;
+        width: 100%;
+        background: rgba(49, 49, 49, 0.98);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+   
+    
+    .spinning-loader {
+        margin-top: 10%;
+        width: 20px;
+        height: 20px;
+        border: 5px solid rgba(255, 235, 59, 0.3);
+        border-left-color: #FFEB3B;
+        border-radius: 50%;
+        background: transparent;
+        animation-name: rotate-s-loader;
+        animation-iteration-count: infinite;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        position: relative;
+      }
+      @keyframes rotate-s-loader {
+        from {
+          transform: rotate(0);
+        }
+      
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .btn2 {
+        font-family: 'Lilita One';
+        margin-top: 10%;
+        height: 10%;
+        width: 45%;
+        font-size: 20px;
+        text-decoration: none;
+        box-shadow: rgba(255, 255, 255, 0.01) 0px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 1px;
+        border-top-width: 0.0625rem;
+        transition: color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
+        border-width: 1px;
+        color: rgb(255, 255, 255);
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-radius: 0.25rem;
+        background: #2ed573;
+        box-shadow: 0 0 0 1px #000;
+        border-bottom: 3px solid #209e55;
+        border-top: 3px solid #37f987;
+        border-radius: 3px;
+        text-shadow: 1px 1px #000, -1px 1px #000, 1px -1px #000, -1px -1px #000, 1px 1px 5px #555;
+    }
+    .swiper-slide
+    {
+        height: 90vh !important;
+    }
+    .swiper-pagination-bullet {
+        width: 40px;
+        /* height: 40px; */
+        padding: 10px;
+        text-align: center;
+        /* line-height: 20px; */
+        font-size: 30px;
+        /* border-left: 1px solid white;
+        border-right: 1px solid white; */
+        /* color:#000;
+        opacity: 1;
+        background: rgba(0,0,0,0.2); */
+      }
+      /* .swiper-pagination-bullet:nth-child(1)
+      {
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+      }
+      .swiper-pagination-bullet:nth-child(2)
+      {
+        border-right: 1px solid white;
+      } */
+      .swiper-pagination-bullet-active {
+        color:#fff;
+        transform: scale(1.2);
+        transition: all .2s ease-in-out;
+        background: rgb(42, 100, 147);
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+      }
+}

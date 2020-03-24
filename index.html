@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/noti.css">
+    <link rel="stylesheet" href="toastify-js-master/src/toastify.css">
+    <link rel="stylesheet" href="css/faw/css/all.css">
+    <link rel="stylesheet" href="css/swipe.min.css">
+
+</head>
+<body>
+    <!-- <div id="seleccion" class="seleccion" style="display: nonee; margin-top:-15px">
+        <div id="spinner" class="spinning-loader"></div>
+        <button id="turno" class="btn2">Empezar</button>
+    </div> -->
+    <!-- <header class="header">
+        <div class="points">Puntos:</div>
+        <input id="points" value="0">
+        <div class="time">
+            <div id="timer">00:05</div>
+        </div>
+    </header>
+
+    <div class="estadisticas card">
+        <div class="nivel-content">
+            <div class="nivel" id="nivel">0</div>
+        </div>
+    </div>
+        
+    </div>
+    <div class="card">
+        <p class="frase" id="frase"></p>
+        <div class="progress">
+            <div class="progress-bar" id="pb"></div>
+        </div>
+    </div>
+
+    
+    <div class="c-buttons">
+        <button class="btn0" onclick="selectFrase(this);"></button>
+        <button class="btn1" onclick="selectFrase(this);"></button>
+    </div> -->
+    
+    
+<!-- Swiper -->
+<div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+            <header class="header">
+                <div class="points">Puntos:</div>
+                <input id="points" value="0">
+                <div class="time">
+                    <div id="timer">00:05</div>
+                </div>
+            </header>
+            <div class="card">
+                <p class="frase" id="frase"></p>
+                <div class="progress">
+                    <div class="progress-bar" id="pb"></div>
+                </div>
+            </div>
+            <div class="c-buttons">
+                <button class="btn0" onclick="selectFrase(this);"></button>
+                <button class="btn1" onclick="selectFrase(this);"></button>
+            </div>
+        </div>
+        <div class="swiper-slide" id="slide2">
+            <h1>proximamente</h1>
+        </div>
+        <div class="swiper-slide">
+            <div class="perfil-puntos">
+                <div class="bg-g">
+                    <div class="w-50">Nombre de usuario:</div>
+                    <div class="w-50" id="nombreUsuario"></div>
+                </div>
+               <div class="bg-g">
+                   <div class="w-50">Mi correo:</div>
+                    <div class="w-50" id="correoUsuario"></div>
+               </div>
+                <div class="bg-g">
+                    <div class="w-50">Mis puntos:</div>
+                    <div class="w-50" id="contadorDos">0</div>
+                </div>
+                <button class="btn btn1" style="margin: 0 auto;" id="btn-incremento">GUARDAR</button>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="leaderBoard">
+                <div class="lb-titulo lb-header">
+                    <div style="margin-right: 5px;">Ranking</div>
+                    <div>&#127942</div>
+                </div>
+                <div id="scoreBoard"></div>
+                <div class="lb-datos">
+                    <div class="lb-medallas">
+                        <div>&#129351;</div>
+                        <div>&#129352;</div>
+                        <div>&#129353;</div>
+                    </div>
+                    <div class="lb-tablaNP">
+                        <div id="tablaNombres"></div>
+                        <div id="tablaPuntos"></div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="toastify-js-master/src/toastify.js"></script>
+<script src="js/frases.js"></script>
+<script src="js/index.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+            var i;
+            i = index + 1;
+            switch(i)
+            {
+                case 1:
+                    i = "<i class='fas fa-gamepad'></i>";
+                break;
+                case 2:
+                    i = "<i class='fas fa-store'></i>";
+                break;
+                case 3:
+                    i = "<i class='fas fa-user'></i>";
+                break;
+                case 4:
+                    i = "<i class='fas fa-trophy'></i>";
+                break;
+            }
+          return '<div class="' + className + '">' + (i) + '</div>';
+        },
+      },
+    });
+</script>
+</html>
