@@ -65,4 +65,4 @@ var sFrases =
     },
 
 ]
-var sNOFrases = {};
+var sNOFrases = [];

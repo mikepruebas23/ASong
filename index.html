@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ff6600" />
-    <title>Adivina</title>
+    <title>Asong</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/noti.css">
     <link rel="stylesheet" href="toastify-js-master/src/toastify.css">
     <link rel="stylesheet" href="css/faw/css/all.css">
     <link rel="stylesheet" href="css/swipe.min.css">
+    <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
 
 </head>
 <body>
@@ -47,22 +48,25 @@
             </header>
             <div class="estadisticas card">
                 <div class="vidas">
-                    <div id="vidas">3</div>
+                    <div id="vidas"></div>
                     <div><i class="fas fa-heart"></i></div>
                 </div>
                 <div class="nivel-content">
-                    <div class="nivel" id="nivel">50%</div>
+                    <div class="nivel" id="nivel">100%</div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id="conFrase">
                 <p class="frase" id="frase"></p>
                 <div class="progress">
                     <div class="progress-bar" id="pb"></div>
                 </div>
             </div>
+            <div class="card" id="sinFrease">
+               <div>Fin</div>
+            </div>
             <div class="c-buttons">
-                <button class="btn0" onclick="selectFrase(this);"></button>
-                <button class="btn1" onclick="selectFrase(this);"></button>
+                <button type="button" class="btn0"  onclick="selectFrase(this);"></button>
+                <button type="button" class="btn1"  onclick="selectFrase(this);"></button>
             </div>
         </div>
         <div class="swiper-slide" id="slide2">
@@ -82,7 +86,7 @@
                     <div class="w-50">Mis puntos:</div>
                     <div class="w-50" id="contadorDos">0</div>
                 </div>
-                <!-- <button class="btn btn1" style="margin: 0 auto;" id="btn-incremento">GUARDAR</button> -->
+                <button class="btn-guardar" style="margin: 0 auto;" id="btn-incremento">GUARDAR</button>
             </div>
         </div>
         <div class="swiper-slide">
@@ -117,6 +121,7 @@
 <script src="toastify-js-master/src/toastify.js"></script>
 <script src="js/frases.js"></script>
 <script src="js/index.js"></script>
+<script src="js/update.js"></script>
 <script src="js/swiper.min.js"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {

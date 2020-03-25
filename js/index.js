@@ -1,5 +1,6 @@
 var FPS = 1;
 var Puntos = 0;
+var iVidas = 5;
 var iNumFra = 8;
 var iPBar;
 var bl;
@@ -20,23 +21,28 @@ var btn1 = $(".btn1");
 var contaTime = document.getElementById("timer");
 var aButtons = [btn0,btn1];
 
-$(document).ready(function () {$("#spinner").hide();});
+$(document).ready(function () {
+    $("#vidas").append(iVidas);
+    $("#spinner").hide();
+});
 
 //random frses
 asignarFrase();
 
 function asignarFrase()
 {
+    if(iNumFra == 0)
+    {
+        iNumFra = 1;
+    }
     var irndmNumber = Math.round(Math.random() * iNumFra);
     var irndmNumber2 = Math.round(Math.random() * iNumFra);
     var irndmNumberButon = Math.round(Math.random() * 1);
     var irndmNumberButon2 = Math.round(Math.random() * 1);
-    
     while(irndmNumber2 == irndmNumber)
     {
         irndmNumber2 = Math.round(Math.random() * iNumFra)
     }
-
     while(irndmNumberButon2 == irndmNumberButon)
     {
         irndmNumberButon2 = Math.round(Math.random() * 1)
@@ -44,45 +50,73 @@ function asignarFrase()
     sDivFrease.empty();
     btn1.empty();
     btn0.empty();
-    sDivFrease.append(sFrases[irndmNumber2].f);
-    sDivFrease.fadeIn(10000);
-    sDivFrease.attr("id",sFrases[irndmNumber2].idf).fadeIn( 10000 );
-    aButtons[irndmNumberButon].attr("id",sFrases[irndmNumber].idB);
-    aButtons[irndmNumberButon].append(sFrases[irndmNumber].buttonName).fadeIn( 10000 );
-    aButtons[irndmNumberButon2].attr("id",sFrases[irndmNumber2].idB);
-    aButtons[irndmNumberButon2].append(sFrases[irndmNumber2].buttonName).fadeIn( 10000 );;
+    if(sFrases.length >= 2)
+    {
+        sDivFrease.append(sFrases[irndmNumber2].f);
+        sDivFrease.fadeIn(10000);
+        sDivFrease.attr("id",sFrases[irndmNumber2].idf).fadeIn( 10000 );
+        aButtons[irndmNumberButon].attr("id",sFrases[irndmNumber].idB);
+        aButtons[irndmNumberButon].append(sFrases[irndmNumber].buttonName).fadeIn( 10000 );
+        aButtons[irndmNumberButon2].attr("id",sFrases[irndmNumber2].idB);
+        aButtons[irndmNumberButon2].append(sFrases[irndmNumber2].buttonName).fadeIn( 10000 );
+    }
+    else
+    {
+        $("#sinFrease").show();
+        $("#conFrase,.btn0,.btn1").hide();
+    }
 }
 
 function selectFrase(value)
 {
     // $('#card-f').addClass('card-f');
     
-    if(value.id == sDivFrease[0].id )
+    if(iVidas > 0)
     {
-        // console.log("si",value.id,sDivFrease[0].id);
-        notiEX();
-    
-        $("#points").val(Puntos+=1);
-        clearInterval(bl);
-        iPBar.style.width = 100 + '%';
-        secs = 5;
-        mins = 0;
-        accum = 100;
-        contaTime.textContent = '00:05';
-        asignarFrase();
+        if(value.id == sDivFrease[0].id )
+        {
+            notiEX();
+            $("#points").val(Puntos+=1);
+            clearInterval(bl);
+            iPBar.style.width = 100 + '%';
+            secs = 5;
+            mins = 0;
+            accum = 100;
+            contaTime.textContent = '00:05';
+          
+            const found = sFrases.find(element => element.idf  === value.id);
+            const index = sFrases.findIndex(element => element === found);
+            
+            // console.log("index",index);
+            // console.log(sFrases);
+            sNOFrases.push(found);
+            // console.log(sNOFrases);
+            sFrases.splice(index, 1);
+            iNumFra -=1;
+            // console.log(sFrases);
+            asignarFrase();
+        }
+        else
+        {
+            notiERR();
+            $("#points").val(Puntos-=1);
+            iVidas-=1;
+            document.getElementById("vidas").innerHTML = iVidas;
+            clearInterval(bl);
+            iPBar.style.width = 100 + '%';
+            secs = 5;
+            mins = 0;
+            accum = 100;
+            contaTime.textContent = '00:05';
+            asignarFrase();
+        }
     }
-    else
+    else 
     {
-        notiERR();
-        
-        $("#points").val(Puntos-=1);
+        $(".btn0,.btn1").attr("disabled", true).addClass("btn-lock");
         clearInterval(bl);
-        iPBar.style.width = 100 + '%';
-        secs = 5;
-        mins = 0;
-        accum = 100;
-        contaTime.textContent = '00:05';
-        asignarFrase();
+        // $(".btn1").attr("disabled", true);
+        console.log(iVidas);
     }
 }
 
