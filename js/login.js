@@ -27,13 +27,16 @@ function alFinalizar(error) {
         // auth/email-already-in-use
         switch (error.code) {
             case 'auth/email-already-in-use':
-                alert('ERROR: No se puede crear la nueva cuenta de usuario, por que el e-mail ya está en uso !');
+                // alert('ERROR: No se puede crear la nueva cuenta de usuario, por que el e-mail ya está en uso !');
+                notiERR("ERROR: No se puede crear la nueva cuenta de usuario, por que el e-mail ya está en uso !.");
                 break;
             case 'auth/invalid-email':
-                alert('ERROR: El e-mail facilitado no es un e-mail correcto.');
+                // alert('ERROR: El e-mail facilitado no es un e-mail correcto.');
+                notiERR("ERROR: El e-mail facilitado no es un e-mail correcto.");
                 break;
             default:
-                alert('Se ha producido un error al crear el usuario.\n\n' + error + '\n');
+                // alert('Se ha producido un error al crear el usuario.\n\n' + error + '\n');
+                notiERR("Se ha producido un error al crear el usuario.\n\n' + error + '\n'");
                 break;
         }
     }
@@ -47,8 +50,9 @@ $(function() {
 
         firebase.auth().signInWithEmailAndPassword(email, password).then(exito).catch(function(error) {
             $("#spinner").html("");
-            //console.log(error);
-            alert("Error detectado:\n\n" + error.message);
+           
+            // alert("Error detectado:\n\n" + error.message);
+            notiERR("Error al iniciar Session.");
         });
     });
 
@@ -58,8 +62,9 @@ $(function() {
         passwordConfirmREG = $("#passwordR2").val();
 
         if (passwordREG != passwordConfirmREG) {
-            alert("Error: Las contraseñas son distintas!");
-            console.log("ERROR");
+            // alert("Error: Las contraseñas son distintas!");
+            notiERR("Error: Las contraseñas son distintas!");
+            
         } else
             firebase.auth().createUserWithEmailAndPassword(emailREG, passwordREG).then(exito).catch(alFinalizar);
     });
@@ -76,3 +81,14 @@ $(function() {
         $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
     });
 });
+function notiERR(string) 
+{
+    Toastify({
+        text: string,
+        gravity: "bottom",
+        position: 'left',
+        // top: "85px",
+        // duration: 100000,
+        backgroundColor: '#EA2027',
+    }).showToast();
+}

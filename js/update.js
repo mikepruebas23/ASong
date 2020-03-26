@@ -20,7 +20,7 @@ $(document).ready(function() {
             // console.log('Usuario: ' + user.uid + ' está logueado con ' + user.providerData[0].providerId);
             // var logueado = '<li><p class="navbar-text navbar-center">' + user.email + '</p></li>';
             // logueado += '<li><button type="button" class="btn btn-warning navbar-btn" id="botonLogout">Salir</button></li>';
-            var logaut = '<button type="button" class="btn btn-warning navbar-btn" id="botonLogout">Salir</button>';
+            var logaut = '<button type="button" class="btn-logout" id="botonLogout">Salir</button>';
 
             $(logaut).appendTo('.swiper-pagination');
             $("#botonLogout").click(desconectar);
@@ -33,7 +33,7 @@ $(document).ready(function() {
             // console.log('ID_USER',ID_USER); si llega hasta aca
 
             document.getElementById('correoUsuario').innerHTML = emailUsuario;
-            document.getElementById('nombreUsuario').innerHTML = nombreUsuario;
+            document.getElementById("nombreUsuario").value = nombreUsuario;
             // document.getElementById('nombreUsuario').innerHTML = nombreUsuario;
 
 
@@ -53,12 +53,13 @@ $(document).ready(function() {
 
     //botonRegistrar puntos
     $('#btn-incremento').click(function() {
+        console.log(document.getElementById('nombreUsuario').value);
         
         console.log(usuarioID);
         var refPuntuaciones = database.ref("puntuacionesASong");
     
         refPuntuaciones.child(usuarioID).set({
-            nombreUsuarioLogeado: nombreUsuario,
+            nombreUsuarioLogeado: 'mike',
             correoUsuario: emailUsuario,
             puntos: 10
 
