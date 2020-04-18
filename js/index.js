@@ -59,6 +59,8 @@ function asignarFrase()
         aButtons[irndmNumberButon].append(sFrases[irndmNumber].buttonName).fadeIn( 10000 );
         aButtons[irndmNumberButon2].attr("id",sFrases[irndmNumber2].idB);
         aButtons[irndmNumberButon2].append(sFrases[irndmNumber2].buttonName).fadeIn( 10000 );
+
+        // increaseSeconds();
     }
     else
     {
@@ -66,7 +68,7 @@ function asignarFrase()
         $("#conFrase,.btn0,.btn1").hide();
     }
 }
-
+// increaseSeconds();
 function selectFrase(value)
 {
     // $('#card-f').addClass('card-f');
@@ -77,6 +79,7 @@ function selectFrase(value)
         {
             notiEX();
             $("#points").val(Puntos+=1);
+            $("#contadorDos").html(Puntos);
             clearInterval(bl);
             iPBar.style.width = 100 + '%';
             secs = 5;
@@ -87,19 +90,18 @@ function selectFrase(value)
             const found = sFrases.find(element => element.idf  === value.id);
             const index = sFrases.findIndex(element => element === found);
             
-            // console.log("index",index);
-            // console.log(sFrases);
             sNOFrases.push(found);
-            // console.log(sNOFrases);
+            
             sFrases.splice(index, 1);
             iNumFra -=1;
-            // console.log(sFrases);
+            
             asignarFrase();
         }
         else
         {
             notiERR();
             $("#points").val(Puntos-=1);
+            $("#contadorDos").html(Puntos);
             iVidas-=1;
             document.getElementById("vidas").innerHTML = iVidas;
             clearInterval(bl);
@@ -160,6 +162,7 @@ function increaseSeconds()
             contaTime.textContent = '00:05';
             
             $("#points").val(Puntos-=1);
+            $("#contadorDos").html(Puntos);
             asignarFrase();
         }
     }, TIME);

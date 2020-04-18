@@ -44,14 +44,16 @@ function alFinalizar(error) {
 
 $(function() {
     $("#botonLogin").click(function() {
+        $("#botonLogin").attr("disabled", true).addClass('bnt-disabled');
+
         $("#spinner").html("<img src='img/spinner.gif' style='width:25px; height:25px;'/>");
         var email = $("#email").val();
         var password = $("#password").val();
 
         firebase.auth().signInWithEmailAndPassword(email, password).then(exito).catch(function(error) {
+            
             $("#spinner").html("");
-           
-            // alert("Error detectado:\n\n" + error.message);
+            $("#botonLogin").attr("disabled", false).removeClass('bnt-disabled');
             notiERR("Error al iniciar Session.");
         });
     });

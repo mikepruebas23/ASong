@@ -26,13 +26,6 @@
             <div id="timer">00:05</div>
         </div>
     </header>
-
-   
-        
-   
-    
-    
-    
 <!-- Swiper -->
 <div class="swiper-container">
 
@@ -76,7 +69,7 @@
             <div class="perfil-puntos">
                 <div class="bg-g">
                     <div class="w-50">Nombre de usuario:</div>
-                    <input type="text" class="w-50" id="nombreUsuario">
+                    <input type="text" class="w-50 input-nameuser" id="nombreUsuario" placeholder="Ingresa tu nombre">
                 </div>
                <div class="bg-g">
                    <div class="w-50">Mi correo:</div>
@@ -86,8 +79,9 @@
                     <div class="w-50">Mis puntos:</div>
                     <div class="w-50" id="contadorDos">0</div>
                 </div>
-                <button class="btn-guardar" style="margin: 0 auto;" id="btn-incremento">GUARDAR</button>
+                <button class="btn-guardar" id="btn-incremento">GUARDAR</button>
             </div>
+            <div class="noName" id="noNameDiv">Ingresa un nombre</div> 
         </div>
         <div class="swiper-slide">
             <div class="leaderBoard">
@@ -95,6 +89,7 @@
                     <div style="margin-right: 5px;">Ranking</div>
                     <div>&#127942</div>
                 </div>
+                <div class="nopoints" id="noPoints">No tienes puntos.</div>
                 <div id="scoreBoard"></div>
                 <div class="lb-datos">
                     <div class="lb-medallas">
@@ -104,10 +99,10 @@
                     </div>
                     <div class="lb-tablaNP">
                         <div id="tablaNombres">
-                            <div>mike</div>
+                            <div></div>
                         </div>
                         <div id="tablaPuntos">
-                            <div>10</div>
+                            <div></div>
                         </div>
                     </div>
                 </div>

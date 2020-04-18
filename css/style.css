@@ -222,10 +222,10 @@
       }
       /*----------------------SWIPER 3 PERFIL --------------------------*/
       .bg-g{
-        background: white;
+        background: #0173ce;
     }
     .perfil-puntos{
-        background: white;
+        background: #2196F3;
         display: flex;
         flex-direction: column;
         margin: 10px;
@@ -239,16 +239,68 @@
     
     .w-50{
         width: 50%;
-        /* text-align: center; */
-        /* padding: 5px; */
+        text-align: center;
+        padding: 5px;
         margin: 5px;
-        background: #eee;
+        background: #0173ce;
+        color: white;
+    }
+    .input-nameuser{
+        border: none;
+        color: white;
+        background: #005da7;
+    }
+    .input-nameuser::placeholder
+    {
+        color: white;
+    }
+
+    .btn-guardar
+    {
+        text-decoration: none;
+        box-shadow: rgba(255, 255, 255, 0.01) 0px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 1px;
+        transition: color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
+        border-width: 1px;
+        color: rgb(255, 255, 255);
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-radius: 0.25rem;
+        background: #69c300;
+        box-shadow: 0 0 0 1px #000;
+        border-bottom: 3px solid #539a00;
+        border-radius: 3px;
+        margin: 10px;
+    }
+    .btn-guardar:active
+    {
+        transform: scale(0.9);
+    }
+    .noName
+    {
+        display: none;
+        background: #ff6161;
+        width: 92%;
+        margin: 0 auto;
+        color: #b90000;
+        text-align: center;
+        padding: 5px;
+        letter-spacing: 2px;
     }
       /*----------------------SWIPER 4 RANKING-------------------*/
       .leaderBoard{
         margin: 5px;
         padding: 5px;
         background: white;
+    }
+    .nopoints
+    {
+        text-align: center;
+        background: #FF5722;
+        color: white;
+        width: 97%;
+        margin: 0 auto;
     }
     .lb-titulo{
         display: flex;

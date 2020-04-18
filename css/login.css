@@ -155,3 +155,9 @@ body:before {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
 }
+
+.bnt-disabled
+{
+    cursor: not-allowed !important;
+    background-color: #9e9e9e !important;
+}
