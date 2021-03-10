@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff6600" />
+    <title>Asong2</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/noti.css">
+    <link rel="stylesheet" href="toastify-js-master/src/toastify.css">
+    <link rel="stylesheet" href="css/faw/css/all.css">
+    <link rel="stylesheet" href="css/swipe.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+
+</head>
+<body>
+    
+    <!-- <div id="seleccion" class="seleccion" style="display: nonee; margin-top:-15px">
+        <div id="spinner" class="spinning-loader"></div>
+        <button id="turno" class="btn2">Empezar</button>
+    </div> -->
+    <!-- <header class="header">
+        <div class="points">Puntos:</div>
+        <input id="points" value="0">
+        <div class="time">
+            <div id="timer">00:05</div>
+        </div>
+    </header>
+<!-- Swiper -->
+<div id="slider-game" class="swiper-container">
+    <div class="container-progress">
+        <div id="plevel" class="plevel">0</div>
+       <div class="bar">
+        <div class="numbers">
+            <div id="have"></div>
+            <div id="evolve"></div>
+        </div>
+        <div class="progressbar" role="progressbar" id="lvlpb"></div>
+       </div>
+    </div>
+
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="content-slide">
+                <div id="options" class="options">
+                    <button type="button" class="btn" onclick="showAreaGameAdivina();">Adivina la cancion</button>
+                    <button type="button" class="btn" onclick="">Sobrevivir</button>
+                    <button onclick="logOut();">logOut</button>
+                </div>
+                <div id="content-slider-game" class="content-slide-game dnone">
+                    <header class="header">
+                        <div class="points">Puntos:</div>
+                        <input id="points" value="0">
+                        <div class="time">
+                            <div id="timer">00:05</div>
+                        </div>
+                    </header>
+                    <div class="estadisticas card">
+                        <div class="vidas">
+                            <div id="vidas"></div>
+                            <div><i class="fas fa-heart"></i></div>
+                        </div>
+                        <div class="nivel-content">
+                            <div class="nivel" id="nivel">100%</div>
+                        </div>
+                    </div>
+                    <div class="card" id="conFrase">
+                        <p class="frase" id="frase"></p>
+                        <div class="progress">
+                            <div class="progress-bar" id="pb"></div>
+                        </div>
+                    </div>
+                    <div class="card" id="sinFrease">
+                       <div>Fin</div>
+                    </div>
+                    <div class="c-buttons">
+                        <button type="button" class="btn0"  onclick="selectFrase(this);"></button>
+                        <button type="button" class="btn1"  onclick="selectFrase(this);"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide" id="slide2">
+            <h1>proximamente</h1>
+        </div>
+        <div class="swiper-slide">
+            <div class="perfil-puntos">
+                <div class="bg-g">
+                    <div class="w-50">Nombre de usuario:</div>
+                    <input type="text" class="w-50 input-nameuser" id="nombreUsuario" placeholder="Ingresa tu nombre">
+                </div>
+               <div class="bg-g">
+                   <div class="w-50">Mi correo:</div>
+                    <div class="w-50" id="correoUsuario"></div>
+               </div>
+                <div class="bg-g">
+                    <div class="w-50">Mis puntos:</div>
+                    <div class="w-50" id="contadorDos">0</div>
+                </div>
+                <button class="btn-guardar" id="btn-incremento" onclick="saveDataProfile();">GUARDAR</button>
+            </div>
+            <div class="noName" id="noNameDiv">Ingresa un nombre</div> 
+        </div>
+        <div class="swiper-slide">
+            <div class="leaderBoard">
+                <div class="lb-titulo lb-header">
+                    <div style="margin-right: 5px;">Ranking</div>
+                    <div>&#127942</div>
+                </div>
+                <div class="nopoints" id="noPoints">No tienes puntos.</div>
+                <div id="scoreBoard"></div>
+                <div class="lb-datos">
+                    <div class="lb-medallas">
+                        <div>&#129351;</div>
+                        <div>&#129352;</div>
+                        <div>&#129353;</div>
+                    </div>
+                    <div class="lb-tablaNP">
+                        <div id="tablaNombres">
+                            <div></div>
+                        </div>
+                        <div id="tablaPuntos">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="toastify-js-master/src/toastify.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/frases.js"></script>
+<!-- <script src="js/index.js"></script> -->
+<script src="js/game.js"></script>
+<!-- <scrip src="js/update.js"></scrip> -->
+<scrip src="js/songs.js"></scrip>
+<script src="js/swiper.min.js"></script>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+            var i;
+            i = index + 1;
+            switch(i)
+            {
+                case 1:
+                    i = "<i class='fas fa-gamepad'></i>";
+                break;
+                case 2:
+                    i = "<i class='fas fa-store'></i>";
+                break;
+                case 3:
+                    i = "<i class='fas fa-user'></i>";
+                break;
+                case 4:
+                    i = "<i class='fas fa-trophy'></i>";
+                break;
+            }
+          return '<div class="' + className + '">' + (i) + '</div>';
+        },
+      },
+    });
+</script>
+</html>

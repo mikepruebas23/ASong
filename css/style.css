@@ -1,209 +1,289 @@
 *:focus {
     outline: 0;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+:root {
+    --bg-color-blue: #3498db;
+}
+
 @media (max-width: 479px) and (min-width: 320px) {
 
-    body
-    {
+    body {
         background-color: #f3f3f3;
     }
-    .header
-    {
-        background-color: white;
-        padding: 15px;
+
+    .container-progress {
+        width: 90%;
+        margin: 15px auto 0 auto;
+    }
+
+    .bar {
+        /* width: 90%; */
+        background-color: gray;
+        border-radius: 5px;
+        background-color: #ced6e0;
+    }
+
+    .numbers {
+        position: absolute;
         display: flex;
-        flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin-bottom: 25px;
-        font-size: 20px;
-        font-family: 'Roboto';
+        right: 46%;
+        font-family: 'Fredoka One', cursive;
+        font-size: 23px;
+        font-weight: bold;
     }
-    .points,#points
-    {
-        width: 35%;
-        /* background-color: blue; */
-        text-align: center;
-        border: none;
+
+    .progressbar {
+        background-color: #1e90ff;
+        width: 0;
+        height: 25px;
+        border-radius: 2px;
+        transition: width .6s ease;
+        /*   margin: 0 auto; */
+
     }
-    .time
-    {
-        width: 30%;
-        /* background-color: red; */
-        text-align: center;
-    }
-    .vidas
-    {
-        display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-    .nivel-content
-    {
-        background: #cecece; 
-    }
-    .nivel
-    {
-        width: 100%;
-        color: #fff;
-        /* margin: 0 auto; */
-        background: rgb(40,181,101);
-        background: linear-gradient(90deg, rgba(40,181,101,1) 37%, rgba(171,224,137,1) 100%);
-    }
-    .card
-    {
-        /* display: none; */
-        background-color: white;
-        /* padding: 5px; */
-        color: gray;
-        margin: 5px auto;
-        width: 90%;
-        text-align: center;
-    }
-    #sinFrease
-    {
+
+    .dnone {
         display: none;
     }
-    .frase
-    {
-        padding: 10px;
-    }
-    .progress
-    {
-        /* padding: 5px; */
-        /* width: 90%; */
-        /* margin: 5px auto; */
-        background: #cecece; 
 
-    } 
-    
-    .progress-bar
-    {
-        background-color: #03a9f4;
-        width: 100%;
-        height: 15px;
-        transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-        /* border-radius: 10px; */
-    }
-    .c-buttons
-    {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* background-color: white; */
-        padding: 5px;
-        text-align: center;
-    }
-    .c-buttons > button 
-    {
-        color: white;
-        width: 50%;
-        margin:0 5px;
-        cursor: pointer;
-        border: none;
-        border-radius: 2px;
-        background-color: #03a9f4;
-        padding: 10px;
-    }
-    .c-buttons > button:active 
-    {
-        transform: scale(0.9);
-    }
-    .seleccion {
-        height: 100vh;
-        width: 100%;
-        background: rgba(49, 49, 49, 0.98);
-        position: absolute;
+    .options {
+        width: 90%;
+        margin: 100px auto 0 auto;
+        /* border: 1px solid red; */
+        border-radius: 3px;
+        background: #ced6e0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
+        padding: 10px;
+        height: 50vh;
     }
-   
-    
-    .spinning-loader {
-        margin-top: 10%;
-        width: 20px;
-        height: 20px;
-        border: 5px solid rgba(255, 235, 59, 0.3);
-        border-left-color: #FFEB3B;
-        border-radius: 50%;
-        background: transparent;
-        animation-name: rotate-s-loader;
-        animation-iteration-count: infinite;
-        animation-duration: 1s;
-        animation-timing-function: linear;
-        position: relative;
-      }
-      @keyframes rotate-s-loader {
-        from {
-          transform: rotate(0);
-        }
-      
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      .btn2 {
-        font-family: 'Lilita One';
-        margin-top: 10%;
-        height: 10%;
-        width: 45%;
-        font-size: 20px;
-        text-decoration: none;
-        box-shadow: rgba(255, 255, 255, 0.01) 0px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 1px;
-        border-top-width: 0.0625rem;
-        transition: color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
-        border-width: 1px;
-        color: rgb(255, 255, 255);
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        border-radius: 0.25rem;
-        background: #2ed573;
-        box-shadow: 0 0 0 1px #000;
-        border-bottom: 3px solid #209e55;
-        border-top: 3px solid #37f987;
-        border-radius: 3px;
-        text-shadow: 1px 1px #000, -1px 1px #000, 1px -1px #000, -1px -1px #000, 1px 1px 5px #555;
-    }
-    .btn-lock
-    {
-        background-color: #a9a9a9 !important;
-        cursor: not-allowed !important;
-    }
-    .swiper-slide
-    {
-        height: 90vh !important;
-    }
-    .swiper-pagination-clickable 
-    {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .btn-logout
-    {
+
+    .btn {
         border: none;
         color: white;
-        background: #357eb9;
-    }
-    .swiper-pagination-bullet {
-        width: 40px;
-        /* height: 40px; */
         padding: 10px;
-        text-align: center;
-        /* line-height: 20px; */
-        font-size: 30px;
-        /* border-left: 1px solid white;
+        border-radius: 3px;
+        transform: scale(0.9);
+        background-color: var(--bg-color-blue);
+        font-family: 'Fredoka One', cursive;
+        font-size: 25px;
+        font-weight: bold;
+    }
+}
+
+.content-slide-start {
+    width: 90%;
+    padding: 5px;
+}
+
+.header {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-family: 'Roboto';
+}
+
+.points,
+#points {
+    width: 35%;
+    /* background-color: blue; */
+    text-align: center;
+    border: none;
+}
+
+.time {
+    width: 30%;
+    /* background-color: red; */
+    text-align: center;
+}
+
+.vidas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nivel-content {
+    background: #cecece;
+}
+
+.nivel {
+    width: 100%;
+    color: #fff;
+    /* margin: 0 auto; */
+    background: rgb(40, 181, 101);
+    background: linear-gradient(90deg, rgba(40, 181, 101, 1) 37%, rgba(171, 224, 137, 1) 100%);
+}
+
+.card {
+    /* display: none; */
+    background-color: white;
+    /* padding: 5px; */
+    color: gray;
+    margin: 5px auto;
+    width: 90%;
+    text-align: center;
+}
+
+#sinFrease {
+    display: none;
+}
+
+.frase {
+    padding: 10px;
+}
+
+.progress {
+    /* padding: 5px; */
+    /* width: 90%; */
+    /* margin: 5px auto; */
+    background: #cecece;
+
+}
+
+.progress-bar {
+    background-color: #03a9f4;
+    width: 100%;
+    height: 15px;
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    /* border-radius: 10px; */
+}
+
+.c-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: white; */
+    padding: 5px;
+    text-align: center;
+}
+
+.c-buttons>button {
+    color: white;
+    width: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background-color: #03a9f4;
+    padding: 10px;
+}
+
+.c-buttons>button:active {
+    transform: scale(0.9);
+}
+
+.seleccion {
+    height: 100vh;
+    width: 100%;
+    background: rgba(49, 49, 49, 0.98);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.spinning-loader {
+    margin-top: 10%;
+    width: 20px;
+    height: 20px;
+    border: 5px solid rgba(255, 235, 59, 0.3);
+    border-left-color: #FFEB3B;
+    border-radius: 50%;
+    background: transparent;
+    animation-name: rotate-s-loader;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    position: relative;
+}
+
+@keyframes rotate-s-loader {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn2 {
+    font-family: 'Lilita One';
+    margin-top: 10%;
+    height: 10%;
+    width: 45%;
+    font-size: 20px;
+    text-decoration: none;
+    box-shadow: rgba(255, 255, 255, 0.01) 0px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 1px;
+    border-top-width: 0.0625rem;
+    transition: color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
+    border-width: 1px;
+    color: rgb(255, 255, 255);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.25rem;
+    background: #2ed573;
+    box-shadow: 0 0 0 1px #000;
+    border-bottom: 3px solid #209e55;
+    border-top: 3px solid #37f987;
+    border-radius: 3px;
+    text-shadow: 1px 1px #000, -1px 1px #000, 1px -1px #000, -1px -1px #000, 1px 1px 5px #555;
+}
+
+.btn-lock {
+    background-color: #a9a9a9 !important;
+    cursor: not-allowed !important;
+}
+
+.swiper-slide {
+    height: 90vh !important;
+}
+
+.swiper-pagination-clickable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-logout {
+    border: none;
+    color: white;
+    background: #357eb9;
+}
+
+.swiper-pagination-bullet {
+    width: 40px;
+    /* height: 40px; */
+    padding: 10px;
+    text-align: center;
+    /* line-height: 20px; */
+    font-size: 30px;
+    /* border-left: 1px solid white;
         border-right: 1px solid white; */
-        /* color:#000;
+    /* color:#000;
         opacity: 1;
         background: rgba(0,0,0,0.2); */
-      }
-      /* .swiper-pagination-bullet:nth-child(1)
+}
+
+/* .swiper-pagination-bullet:nth-child(1)
       {
         border-left: 1px solid white;
         border-right: 1px solid white;
@@ -212,153 +292,167 @@
       {
         border-right: 1px solid white;
       } */
-      .swiper-pagination-bullet-active {
-        color:#fff;
-        transform: scale(1.2);
-        transition: all .2s ease-in-out;
-        background: rgb(42, 100, 147);
-        border-left: 1px solid white;
-        border-right: 1px solid white;
-      }
-      /*----------------------SWIPER 3 PERFIL --------------------------*/
-      .bg-g{
-        background: #0173ce;
-    }
-    .perfil-puntos{
-        background: #2196F3;
-        display: flex;
-        flex-direction: column;
-        margin: 10px;
-        font-family: 'Lilita One';
-    }
-    .perfil-puntos > div {
-        display: flex;
-        margin: 5px;
-    }
-    
-    
-    .w-50{
-        width: 50%;
-        text-align: center;
-        padding: 5px;
-        margin: 5px;
-        background: #0173ce;
-        color: white;
-    }
-    .input-nameuser{
-        border: none;
-        color: white;
-        background: #005da7;
-    }
-    .input-nameuser::placeholder
-    {
-        color: white;
-    }
+.swiper-pagination-bullet-active {
+    color: #fff;
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
+    background: rgb(42, 100, 147);
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
 
-    .btn-guardar
-    {
-        text-decoration: none;
-        box-shadow: rgba(255, 255, 255, 0.01) 0px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 1px;
-        transition: color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
-        border-width: 1px;
-        color: rgb(255, 255, 255);
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        border-radius: 0.25rem;
-        background: #69c300;
-        box-shadow: 0 0 0 1px #000;
-        border-bottom: 3px solid #539a00;
-        border-radius: 3px;
-        margin: 10px;
-    }
-    .btn-guardar:active
-    {
-        transform: scale(0.9);
-    }
-    .noName
-    {
-        display: none;
-        background: #ff6161;
-        width: 92%;
-        margin: 0 auto;
-        color: #b90000;
-        text-align: center;
-        padding: 5px;
-        letter-spacing: 2px;
-    }
-      /*----------------------SWIPER 4 RANKING-------------------*/
-      .leaderBoard{
-        margin: 5px;
-        padding: 5px;
-        background: white;
-    }
-    .nopoints
-    {
-        text-align: center;
-        background: #FF5722;
-        color: white;
-        width: 97%;
-        margin: 0 auto;
-    }
-    .lb-titulo{
-        display: flex;
-        justify-content: center;
-        font-size: 25px;
-    }
-    .lb-header {
-        font-family: 'Lilita One';
-        margin: 7px;
-        background: #03a9f4;
-        padding: .6em .8em .8em;
-        color: white;
-        margin: 5px;
-        cursor: pointer;
-        outline: 0;
-        transition: .2s;
-        will-change: transform;
-    }
-    .lb-datos{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        background: white;
-        
-    }
-    .lb-medallas{
-        width: 20%;
-        margin: 0 auto;
-        text-align: center;
-        background: white;
-    }
-    .lb-medallas > div{
-        margin: 5px;
-        color: white;
-        background: #009432;
-    }
-    #tablaNombres > div{
-        margin: 5px;
-        color: white;
-        background: #03a9f4;
-        font-size: 16px;
-    }
-    #tablaPuntos > div{
-        margin: 5px;
-        color: white;
-        background: #ff6600;
-        font-family: 'Lilita One';
-    }
-    .lb-tablaNP{
-        display: flex;
-        width: 80%;
-    }
-    .lb-tablaNP > div:first-child{
-        width: 70%;
-        text-align: center;
-    }
-    .lb-tablaNP > div:last-child{
-        width: 30%;
-        text-align: center;
-    }
+/*----------------------SWIPER 3 PERFIL --------------------------*/
+.bg-g {
+    background: #0173ce;
+}
+
+.perfil-puntos {
+    background: #2196F3;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    font-family: 'Lilita One';
+}
+
+.perfil-puntos>div {
+    display: flex;
+    margin: 5px;
+}
+
+
+.w-50 {
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    background: #0173ce;
+    color: white;
+}
+
+.input-nameuser {
+    border: none;
+    color: white;
+    background: #005da7;
+}
+
+.input-nameuser::placeholder {
+    color: white;
+}
+
+.btn-guardar {
+    text-decoration: none;
+    box-shadow: rgba(255, 255, 255, 0.01) 0px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 1px;
+    transition: color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
+    border-width: 1px;
+    color: rgb(255, 255, 255);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.25rem;
+    background: #69c300;
+    box-shadow: 0 0 0 1px #000;
+    border-bottom: 3px solid #539a00;
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.btn-guardar:active {
+    transform: scale(0.9);
+}
+
+.noName {
+    display: none;
+    background: #ff6161;
+    width: 92%;
+    margin: 0 auto;
+    color: #b90000;
+    text-align: center;
+    padding: 5px;
+    letter-spacing: 2px;
+}
+
+/*----------------------SWIPER 4 RANKING-------------------*/
+.leaderBoard {
+    margin: 5px;
+    padding: 5px;
+    background: white;
+}
+
+.nopoints {
+    text-align: center;
+    background: #FF5722;
+    color: white;
+    width: 97%;
+    margin: 0 auto;
+}
+
+.lb-titulo {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.lb-header {
+    font-family: 'Lilita One';
+    margin: 7px;
+    background: #03a9f4;
+    padding: .6em .8em .8em;
+    color: white;
+    margin: 5px;
+    cursor: pointer;
+    outline: 0;
+    transition: .2s;
+    will-change: transform;
+}
+
+.lb-datos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: white;
+
+}
+
+.lb-medallas {
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+}
+
+.lb-medallas>div {
+    margin: 5px;
+    color: white;
+    background: #009432;
+}
+
+#tablaNombres>div {
+    margin: 5px;
+    color: white;
+    background: #03a9f4;
+    font-size: 16px;
+}
+
+#tablaPuntos>div {
+    margin: 5px;
+    color: white;
+    background: #ff6600;
+    font-family: 'Lilita One';
+}
+
+.lb-tablaNP {
+    display: flex;
+    width: 80%;
+}
+
+.lb-tablaNP>div:first-child {
+    width: 70%;
+    text-align: center;
+}
+
+.lb-tablaNP>div:last-child {
+    width: 30%;
+    text-align: center;
+}
 }

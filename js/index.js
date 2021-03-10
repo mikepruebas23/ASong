@@ -1,6 +1,6 @@
 var FPS = 1;
 var Puntos = 0;
-var iVidas = 5;
+var iVidas = 2;
 var iNumFra = 8;
 var iPBar;
 var bl;
@@ -19,90 +19,95 @@ var sDivFrease = $(".frase");
 var btn0 = $(".btn0");
 var btn1 = $(".btn1");
 var contaTime = document.getElementById("timer");
-var aButtons = [btn0,btn1];
+var aButtons = [btn0, btn1];
+
+// import songs  from './songs';
 
 $(document).ready(function () {
+    // console.log(localStorage.getItem('USERUID'));
+    // console.log(localStorage.getItem('USEREMAIL'));
+    // console.log(localStorage.getItem('USEREMAILVERIFY'));
+    // console.log(localStorage.getItem('USERNAME'));
     $("#vidas").append(iVidas);
     $("#spinner").hide();
+    $("#correoUsuario").html(localStorage.getItem('USEREMAIL'));
+    $("#nombreUsuario").val(localStorage.getItem('USERNAME'));
+    // console.log(songs)
 });
 
 //random frses
 asignarFrase();
 
-function asignarFrase()
-{
-    if(iNumFra == 0)
-    {
+function asignarFrase() {
+    if (iNumFra == 0) {
         iNumFra = 1;
     }
     var irndmNumber = Math.round(Math.random() * iNumFra);
     var irndmNumber2 = Math.round(Math.random() * iNumFra);
     var irndmNumberButon = Math.round(Math.random() * 1);
     var irndmNumberButon2 = Math.round(Math.random() * 1);
-    while(irndmNumber2 == irndmNumber)
-    {
+    while (irndmNumber2 == irndmNumber) {
         irndmNumber2 = Math.round(Math.random() * iNumFra)
     }
-    while(irndmNumberButon2 == irndmNumberButon)
-    {
+    while (irndmNumberButon2 == irndmNumberButon) {
         irndmNumberButon2 = Math.round(Math.random() * 1)
     }
     sDivFrease.empty();
     btn1.empty();
     btn0.empty();
-    if(sFrases.length >= 2)
-    {
+    if (sFrases.length >= 2) {
         sDivFrease.append(sFrases[irndmNumber2].f);
         sDivFrease.fadeIn(10000);
-        sDivFrease.attr("id",sFrases[irndmNumber2].idf).fadeIn( 10000 );
-        aButtons[irndmNumberButon].attr("id",sFrases[irndmNumber].idB);
-        aButtons[irndmNumberButon].append(sFrases[irndmNumber].buttonName).fadeIn( 10000 );
-        aButtons[irndmNumberButon2].attr("id",sFrases[irndmNumber2].idB);
-        aButtons[irndmNumberButon2].append(sFrases[irndmNumber2].buttonName).fadeIn( 10000 );
+        sDivFrease.attr("id", sFrases[irndmNumber2].idf).fadeIn(10000);
+        aButtons[irndmNumberButon].attr("id", sFrases[irndmNumber].idB);
+        aButtons[irndmNumberButon].append(sFrases[irndmNumber].buttonName).fadeIn(10000);
+        aButtons[irndmNumberButon2].attr("id", sFrases[irndmNumber2].idB);
+        aButtons[irndmNumberButon2].append(sFrases[irndmNumber2].buttonName).fadeIn(10000);
 
         // increaseSeconds();
-    }
-    else
-    {
+    } else {
         $("#sinFrease").show();
         $("#conFrase,.btn0,.btn1").hide();
     }
 }
 // increaseSeconds();
-function selectFrase(value)
-{
+function selectFrase(value) {
     // $('#card-f').addClass('card-f');
-    
-    if(iVidas > 0)
-    {
-        if(value.id == sDivFrease[0].id )
-        {
-            notiEX();
-            $("#points").val(Puntos+=1);
-            $("#contadorDos").html(Puntos);
+
+
+
+
+    if (value.id == sDivFrease[0].id) {
+        notiEX();
+        $("#points").val(Puntos += 1);
+        $("#contadorDos").html(Puntos);
+        clearInterval(bl);
+        iPBar.style.width = 100 + '%';
+        secs = 5;
+        mins = 0;
+        accum = 100;
+        contaTime.textContent = '00:05';
+
+        const found = sFrases.find(element => element.idf === value.id);
+        const index = sFrases.findIndex(element => element === found);
+
+        sNOFrases.push(found);
+
+        sFrases.splice(index, 1);
+        iNumFra -= 1;
+
+        asignarFrase();
+    } else {
+        notiERR();
+        $("#points").val(Puntos -= 1);
+        $("#contadorDos").html(Puntos);
+        iVidas -= 1;
+        if (iVidas <= 0) {
+            document.getElementById("vidas").innerHTML = iVidas;
+            $(".btn0,.btn1").attr("disabled", true).addClass("btn-lock");
             clearInterval(bl);
-            iPBar.style.width = 100 + '%';
-            secs = 5;
-            mins = 0;
-            accum = 100;
-            contaTime.textContent = '00:05';
-          
-            const found = sFrases.find(element => element.idf  === value.id);
-            const index = sFrases.findIndex(element => element === found);
-            
-            sNOFrases.push(found);
-            
-            sFrases.splice(index, 1);
-            iNumFra -=1;
-            
-            asignarFrase();
-        }
-        else
-        {
-            notiERR();
-            $("#points").val(Puntos-=1);
-            $("#contadorDos").html(Puntos);
-            iVidas-=1;
+            // $(".btn1").attr("disabled", true);
+        } else {
             document.getElementById("vidas").innerHTML = iVidas;
             clearInterval(bl);
             iPBar.style.width = 100 + '%';
@@ -112,19 +117,13 @@ function selectFrase(value)
             contaTime.textContent = '00:05';
             asignarFrase();
         }
+
     }
-    else 
-    {
-        $(".btn0,.btn1").attr("disabled", true).addClass("btn-lock");
-        clearInterval(bl);
-        // $(".btn1").attr("disabled", true);
-        console.log(iVidas);
-    }
+
 }
 
 //funcion incrementar porcentaje
-function increaseSeconds() 
-{
+function increaseSeconds() {
     bl = setInterval(() => {
         if (secs < 59) {
             secs--;
@@ -160,21 +159,19 @@ function increaseSeconds()
             mins = 0;
             accum = 100;
             contaTime.textContent = '00:05';
-            
-            $("#points").val(Puntos-=1);
+
+            $("#points").val(Puntos -= 1);
             $("#contadorDos").html(Puntos);
             asignarFrase();
         }
     }, TIME);
 }
 
-$("#turno").click(function () 
-{
+$("#turno").click(function () {
     $("#spinner").show();
 
     var x = rrandom();
-    switch (x) 
-    {
+    switch (x) {
         case 1:
             $("#uno").attr("disabled", false);
             // $("#turno").addClass('class-animated');
@@ -183,24 +180,21 @@ $("#turno").click(function ()
             $("#r-turno").html("En Espera").addClass('sinTurno');
             break;
     }
-    setTimeout(function () 
-    {
-        $("#seleccion").fadeOut( "slow" );
+    setTimeout(function () {
+        $("#seleccion").fadeOut("slow");
 
         //iniciar timer
         increaseSeconds();
     }, 1500);
 });
 
-function rrandom() 
-{
+function rrandom() {
     ronda = Math.floor(Math.random() * (3 - 1)) + 1;
     return ronda;
 }
 
 //Notificaciones
-function notiERR() 
-{
+function notiERR() {
     Toastify({
         text: "<i class='fas fa-times'></i>",
         gravity: "bottom",
@@ -210,8 +204,8 @@ function notiERR()
         backgroundColor: '#EA2027',
     }).showToast();
 }
-function notiEX() 
-{
+
+function notiEX() {
     Toastify({
         text: "<i class='fas fa-check'></i>",
         gravity: "bottom",

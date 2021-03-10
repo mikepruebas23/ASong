@@ -1,20 +1,67 @@
-// Inicializar la base de datos
-var config = {
-    apiKey: "AIzaSyDy60mMMiFgtrIizIqmDzd8R4dJ7Sgzxg8",
-    authDomain: "clicker-mikerm24.firebaseapp.com",
-    databaseURL: "https://clicker-mikerm24.firebaseio.com",
-    projectId: "clicker-mikerm24",
-    storageBucket: "clicker-mikerm24.appspot.com",
-    messagingSenderId: "483328941100"
-};
-
-firebase.initializeApp(config);
-
+const DB_USERS = 'users';
 var emailREG, passwordREG, passwordConfirmREG;
 
-function exito() {
+function sendToIndex() {
     $("#spinner").html("");
-    location.assign('../index.html');
+    location.assign('../index2.html');
+}
+
+// Chequeamos la autenticación antes de acceder al resto de contenido de este fichero.
+function verifyUSer(user){
+    let loginUser = getUser(user.user.uid);
+    // console.log("loginUser: ", loginUser);
+    if(loginUser){
+        // console.log(loginUser);
+        // console.log("usuario existe");
+        // console.log(user);
+        console.log("Login");
+        setInterval(function(){ sendToIndex(); }, 2000);
+    }
+    else {
+        db.collection(DB_USERS).doc(user.user.uid).set({
+            nombre: user.user.displayName,
+            email: user.user.email,
+            emailVerificado: user.user.emailVerified,
+            ids: user.user.uid,
+            puntos: 0,
+            lvl: 0,
+            evolve: 5
+        })
+        .then(() => {
+            // console.log("Document written with ID: ", user.user.uid);
+            console.log("usuario creado");
+            // sendToIndex();
+        })
+        .catch((error) => {
+            console.error("Error adding document: ", error);
+        }); 
+    }
+}
+
+function getUser(id){
+   let user = db.collection(DB_USERS).get(id).then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            let user = doc.data();
+            console.log("user: ", user);
+            console.log(user.ids);
+            console.log(user.email);
+            console.log(user.nombre);
+            console.log(user.puntos);
+            console.log(user.lvl);
+            console.log(user.evolve);
+            localStorage.setItem('USERUID', user.ids);
+            localStorage.setItem('USEREMAIL', user.email);
+            localStorage.setItem('USEREMAILVERIFY', user.emailVerificado);
+            localStorage.setItem('USERNAME', user.nombre);
+            localStorage.setItem('USERPOINTS', user.puntos);
+            localStorage.setItem('USERLVL', user.lvl);
+            localStorage.setItem('USEREVOLVE', user.evolve);
+            return user;
+        });
+    });
+
+    // return getUSer;
+    return user;
 }
 
 function alFinalizar(error) {
@@ -50,12 +97,25 @@ $(function() {
         var email = $("#email").val();
         var password = $("#password").val();
 
-        firebase.auth().signInWithEmailAndPassword(email, password).then(exito).catch(function(error) {
-            
-            $("#spinner").html("");
-            $("#botonLogin").attr("disabled", false).removeClass('bnt-disabled');
-            notiERR("Error al iniciar Session.");
-        });
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                verifyUSer(user);
+            })
+            .catch((error) => {
+                let errorCode = error.code;
+                let errorMessage = error.message;
+
+                console.log(errorCode, errorMessage)
+
+                $("#spinner").html("");
+                $("#botonLogin").attr("disabled", false).removeClass('bnt-disabled');
+                notiERR("Error al iniciar Session.");
+            });
+                    // else {
+                    //     $("#spinner").html("");
+                    //     $("#botonLogin").attr("disabled", false).removeClass('bnt-disabled');
+                    //     notiERR("Error al iniciar Session.");
+                    // }
     });
 
     $("#botonRegistro2").click(function() {

@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/faw/css/all.css">
     <link rel="stylesheet" href="css/swipe.min.css">
     <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script> -->
 
 </head>
 <body>
@@ -32,34 +34,41 @@
     <div class="swiper-wrapper">
 
         <div class="swiper-slide">
-            <header class="header">
-                <div class="points">Puntos:</div>
-                <input id="points" value="0">
-                <div class="time">
-                    <div id="timer">00:05</div>
+            <div class="content-slide">
+                <div class="content-slide-start">
+                    <button type="button" class="btn" onclick="showAreaGame();">Adivina la cancion</button>
                 </div>
-            </header>
-            <div class="estadisticas card">
-                <div class="vidas">
-                    <div id="vidas"></div>
-                    <div><i class="fas fa-heart"></i></div>
+                <div class="content-slide-game">
+                    <header class="header">
+                        <div class="points">Puntos:</div>
+                        <input id="points" value="0">
+                        <div class="time">
+                            <div id="timer">00:05</div>
+                        </div>
+                    </header>
+                    <div class="estadisticas card">
+                        <div class="vidas">
+                            <div id="vidas"></div>
+                            <div><i class="fas fa-heart"></i></div>
+                        </div>
+                        <div class="nivel-content">
+                            <div class="nivel" id="nivel">100%</div>
+                        </div>
+                    </div>
+                    <div class="card" id="conFrase">
+                        <p class="frase" id="frase"></p>
+                        <div class="progress">
+                            <div class="progress-bar" id="pb"></div>
+                        </div>
+                    </div>
+                    <div class="card" id="sinFrease">
+                       <div>Fin</div>
+                    </div>
+                    <div class="c-buttons">
+                        <button type="button" class="btn0"  onclick="selectFrase(this);"></button>
+                        <button type="button" class="btn1"  onclick="selectFrase(this);"></button>
+                    </div>
                 </div>
-                <div class="nivel-content">
-                    <div class="nivel" id="nivel">100%</div>
-                </div>
-            </div>
-            <div class="card" id="conFrase">
-                <p class="frase" id="frase"></p>
-                <div class="progress">
-                    <div class="progress-bar" id="pb"></div>
-                </div>
-            </div>
-            <div class="card" id="sinFrease">
-               <div>Fin</div>
-            </div>
-            <div class="c-buttons">
-                <button type="button" class="btn0"  onclick="selectFrase(this);"></button>
-                <button type="button" class="btn1"  onclick="selectFrase(this);"></button>
             </div>
         </div>
         <div class="swiper-slide" id="slide2">
@@ -117,6 +126,7 @@
 <script src="js/frases.js"></script>
 <script src="js/index.js"></script>
 <script src="js/update.js"></script>
+<script src="js/songs.js"></script>
 <script src="js/swiper.min.js"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {

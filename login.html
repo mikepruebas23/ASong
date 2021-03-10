@@ -13,8 +13,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="toastify-js-master/src/toastify.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
-    <script src="js/login.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+  <script src="js/firebase.js"></script>
+  <script src="js/login.js"></script>
     <title>Login de Usuarios</title>
 </head>
 
@@ -30,14 +39,12 @@
             <p class="message">Ya estas Registrado? <a href="#">Acceder</a></p>
         </form>
         <form class="login-form">
-            <input type="text" id="email" placeholder="correo electronico" />
-            <input type="password" id="password" placeholder="contraseña" />
+            <input type="text" id="email" placeholder="correo electronico" value="mikepruebas23@gmail.com"/>
+            <input type="password" id="password" placeholder="contraseña" value="mikegeko1"/>
             <button type="button" id="botonLogin">Entrar</button>
             <p class="message">No Estas Registrado? <a href="#">Crear una cuenta</a></p>
         </form>
     </div>
 
 </body>
-
-
 </html>
