@@ -3,7 +3,7 @@ var emailREG, passwordREG, passwordConfirmREG;
 
 function sendToIndex() {
     $("#spinner").html("");
-    location.assign('../index2.html');
+    location.assign('../index.html');
 }
 
 // Chequeamos la autenticación antes de acceder al resto de contenido de este fichero.
