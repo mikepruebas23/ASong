@@ -3,7 +3,12 @@ var emailREG, passwordREG, passwordConfirmREG;
 
 function sendToIndex() {
     $("#spinner").html("");
-    location.assign('../index.html');
+
+    //local path
+    // location.assign('../index.html');
+
+    //Server
+    location.assign('https://mikepruebas23.github.io/ASong/');
 }
 
 // Chequeamos la autenticación antes de acceder al resto de contenido de este fichero.
