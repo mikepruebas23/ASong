@@ -51,10 +51,6 @@ let iCostefinal =  5 + USERCOSTEVIDA;
 const _PBELEMENT = $("#lvlpb");
 
 $(document).ready(function () {
-    // console.log(localStorage.getItem('USERUID'));
-    // console.log(localStorage.getItem('USEREMAIL'));
-    // console.log(localStorage.getItem('USEREMAILVERIFY'));
-    // console.log(localStorage.getItem('USERNAME'));
     $("#spinner").hide();
     $("#correoUsuario").html(localStorage.getItem('USEREMAIL'));
     $("#nombreUsuario").val(localStorage.getItem('USERNAME'));
@@ -177,7 +173,6 @@ function selectFrase2(value){
 
 }
 
-
 function increaseSeconds2(value) {
     console.log("VALUES: ", value);
     startGameInterval = setInterval(() => {
@@ -211,76 +206,8 @@ function increaseSeconds2(value) {
             updateUserMoney(USERMONEY);
 
         }
-        // if(sFrases.length <= 0){
-        //     clearInterval(bl);
-        //     console.log("sin canciones!")
-        //     return;
-        // }
-        // if (accum <= TOTAL_PERCENT) {
-        //     clearInterval(bl);
-        //     iPBar.style.width = 100 + '%';
-        //     secs = 5;
-        //     mins = 0;
-        //     accum = 100;
-        //     contaTime.textContent = '00:05';
-
-        //     $("#plife").html(USERLIFES -= 1);
-        //     $("#contadorDos").html(Puntos);
-        //     asignarFrase();
-        //     console.log("SE ACABARON LOS SEGUNDOS!: ",USERLIFES);
-
-        //     found = sFrases.find(element => element.idf === value.id);
-        //     index = sFrases.findIndex(element => element === found);
-
-        //     sNOFrases.push(found);
-        //     sFrases.splice(index, 1);
-
-        //     iNumFra -= 1;
-
-
-
-        //     // iContRestantes = sFrases.length;
-        //     iContRestantes++;
-        //     $("#restantes").html(iContRestantes + "/9")
-
-        //     if(iContRestantes >= 9){
-        //         console.log("SE acabaron las canciones: ",iContRestantes);
-        //     }
-
-        //     if (USERLIFES <= 0) {
-        //         $("#plife").html(USERLIFES);
-        //         $(".btn0,.btn1").attr("disabled", true).addClass("btn-lock");
-        //         clearInterval(bl);
-        //         console.log("LLEGO A CERO")
-        //         // $(".btn1").attr("disabled", true);
-        //     }
-        //     else {
-        //         increaseSeconds(value);
-        //     }
-        // }
     }, TIME);
 }
-
-$("#turno").click(function () {
-    $("#spinner").show();
-
-    var x = rrandom();
-    switch (x) {
-        case 1:
-            $("#uno").attr("disabled", false);
-            // $("#turno").addClass('class-animated');
-            break;
-        case 2:
-            $("#r-turno").html("En Espera").addClass('sinTurno');
-            break;
-    }
-    setTimeout(function () {
-        $("#seleccion").fadeOut("slow");
-
-        //iniciar timer
-        increaseSeconds();
-    }, 1500);
-});
 
 function rrandom() {
     ronda = Math.floor(Math.random() * (3 - 1)) + 1;
@@ -317,11 +244,8 @@ function showAreaGameAdivina() {
 }
 
 function saveDataProfile() {
-    console.log(USERUID);
     db.collection(DB_USERS).doc(USERUID).update({
             nombre: $("#nombreUsuario").val(),
-            // email: USEREMAIL,
-            // emailVerificado: USEREMAILVERIFY,
             ids: USERUID,
             puntos: parseInt(Puntos),
             lvl: parseInt(iUserLvl),
@@ -339,7 +263,9 @@ function saveDataProfile() {
             localStorage.setItem('USERLIFES', parseInt(USERLIFES));
             localStorage.setItem('USERMONEY', parseInt(USERMONEY));
             localStorage.setItem('USERCOSTEVIDA',parseInt(USERCOSTEVIDA));
-            console.log("usuario actualizado");
+
+            mostrarNotificacion('Usuario Actualizado!');
+            
             getPlayersRangking();
             // sendToIndex();
         })
@@ -604,8 +530,19 @@ async function getPlayersRangking(){
         // return response;
 }
 
+function mostrarNotificacion(mensaje){
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: mensaje,
+        showConfirmButton: false,
+        timer: 2000
+    });
+}
+
 getPlayersRangking();
 // console.log("xt: ",xt)};
 
 // 319 lines
 // 523 lines 11/07/2021
+// 548 lines 22/07/2021

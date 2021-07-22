@@ -15,9 +15,14 @@ function sendToIndex() {
 var userTest = 0;
 async function verifyUSer(user){
     let resp = await getUser(user.user.uid);
-    console.log("resp: ", resp);
     if(resp){
-        console.log("No crea usuario porque ya existe y manda al index");
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Inicio de Sesión con exito!',
+            showConfirmButton: false,
+            timer: 2000
+        });
         setInterval(function(){ sendToIndex(); }, 2000);
     }
     else {
@@ -35,10 +40,26 @@ async function verifyUSer(user){
             vidas: 10
         })
         .then(() => {
-            // console.log("Document written with ID: ", user.user.uid);
-            console.log("usuario game creado");
+
+            localStorage.setItem('USERNAME','TuNombre');
+            localStorage.setItem('USEREMAIL', user.user.email);
+            localStorage.setItem('USEREMAILVERIFY', user.user.emailVerified);
+            localStorage.setItem('USERUID', user.user.uid);
+            localStorage.setItem('USERPOINTS', 0);
+            localStorage.setItem('USERLVL', 0);
+            localStorage.setItem('USEREVOLVE', 5);
+            localStorage.setItem('USERMONEY', 0);
+            localStorage.setItem('USERCOSTEVIDA', 1);
+            localStorage.setItem('USERLIFES', 10);
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Inicio de Sesión con exito!',
+                showConfirmButton: false,
+                timer: 2000
+            });
             setInterval(function(){ sendToIndex(); }, 2000);
-            // sendToIndex();
         })
         .catch((error) => {
             console.error("Error adding document: ", error);
@@ -66,23 +87,15 @@ function getUser(id){
                     return true;
                 }
             } else {
-                console.log("No such document!");
                 return false;
             }
         }).catch(error => {
             console.log("Error getting document:", error);
-            //Handle this situation the way you want
         });
 
 }
 
-async function getMarker() {
-    const snapshot = await firebase.firestore().collection('users').get('gCzxIMmwMVYrr5NdSTk4')
-    return snapshot.docs.map(doc => doc.data());
-}
-
 function alFinalizar(error) {
-    // console.log(error);
 
     if (error !== 'undefined') {
         // Códigos de error:
@@ -128,11 +141,6 @@ $(function() {
                 $("#botonLogin").attr("disabled", false).removeClass('bnt-disabled');
                 notiERR("Error al iniciar Session.");
             });
-                    // else {
-                    //     $("#spinner").html("");
-                    //     $("#botonLogin").attr("disabled", false).removeClass('bnt-disabled');
-                    //     notiERR("Error al iniciar Session.");
-                    // }
     });
 
     $("#botonRegistro2").click(function() {
@@ -141,27 +149,31 @@ $(function() {
         passwordConfirmREG = $("#passwordR2").val();
 
         if (passwordREG != passwordConfirmREG) {
-            // alert("Error: Las contraseñas son distintas!");
             notiERR("Error: Las contraseñas son distintas!");
             
         } else{
 
-            firebase.auth().createUserWithEmailAndPassword(emailREG, passwordREG).then(console.log("CREATR A COUNT SUCCESSFULL")).catch(alFinalizar);
+            firebase.auth().createUserWithEmailAndPassword(emailREG, passwordREG).then(
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Tu cuenta ha sido creada con exito!',
+                    showConfirmButton: false,
+                    timer: 2000
+                }),
+                setTimeout(function(){ location.reload(); }, 3000)
+            ).catch(alFinalizar);
+
+            
+              
         }
     });
-    // $("#botonRegistro").click(function() {
-    //     location.assign('registro.html');
-    // });
-
-
-    // $("#botonCancelar").click(function() {
-    //     location.assign('login.html');
-    // });
 
     $('.message a').click(function() {
         $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
     });
 });
+
 function notiERR(string) 
 {
     Toastify({
