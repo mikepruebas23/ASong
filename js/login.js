@@ -12,29 +12,32 @@ function sendToIndex() {
 }
 
 // Chequeamos la autenticación antes de acceder al resto de contenido de este fichero.
-function verifyUSer(user){
-    let loginUser = getUser(user.user.uid);
-    // console.log("loginUser: ", loginUser);
-    if(loginUser){
-        // console.log(loginUser);
-        // console.log("usuario existe");
-        // console.log(user);
-        console.log("Login");
+var userTest = 0;
+async function verifyUSer(user){
+    let resp = await getUser(user.user.uid);
+    console.log("resp: ", resp);
+    if(resp){
+        console.log("No crea usuario porque ya existe y manda al index");
         setInterval(function(){ sendToIndex(); }, 2000);
     }
     else {
+        //change data || set
         db.collection(DB_USERS).doc(user.user.uid).set({
-            nombre: user.user.displayName,
+            nombre: 'TuNombre',
             email: user.user.email,
             emailVerificado: user.user.emailVerified,
             ids: user.user.uid,
             puntos: 0,
             lvl: 0,
-            evolve: 5
+            evolve: 5,
+            dinero: 0,
+            costeVida: 1,
+            vidas: 10
         })
         .then(() => {
             // console.log("Document written with ID: ", user.user.uid);
-            console.log("usuario creado");
+            console.log("usuario game creado");
+            setInterval(function(){ sendToIndex(); }, 2000);
             // sendToIndex();
         })
         .catch((error) => {
@@ -44,29 +47,38 @@ function verifyUSer(user){
 }
 
 function getUser(id){
-   let user = db.collection(DB_USERS).get(id).then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            let user = doc.data();
-            console.log("user: ", user);
-            console.log(user.ids);
-            console.log(user.email);
-            console.log(user.nombre);
-            console.log(user.puntos);
-            console.log(user.lvl);
-            console.log(user.evolve);
-            localStorage.setItem('USERUID', user.ids);
-            localStorage.setItem('USEREMAIL', user.email);
-            localStorage.setItem('USEREMAILVERIFY', user.emailVerificado);
-            localStorage.setItem('USERNAME', user.nombre);
-            localStorage.setItem('USERPOINTS', user.puntos);
-            localStorage.setItem('USERLVL', user.lvl);
-            localStorage.setItem('USEREVOLVE', user.evolve);
-            return user;
-        });
-    });
 
-    // return getUSer;
-    return user;
+    let docRef = db.collection("users").doc(id);
+    return docRef.get().then((doc) => { 
+        if (doc.exists) {
+                let user = doc.data();
+                if (id == user.ids){
+                    localStorage.setItem('USERUID', user.ids);
+                    localStorage.setItem('USEREMAIL', user.email);
+                    localStorage.setItem('USEREMAILVERIFY', user.emailVerificado);
+                    localStorage.setItem('USERNAME', user.nombre);
+                    localStorage.setItem('USERPOINTS', user.puntos);
+                    localStorage.setItem('USERLVL', user.lvl);
+                    localStorage.setItem('USEREVOLVE', user.evolve);
+                    localStorage.setItem('USERMONEY', user.dinero);
+                    localStorage.setItem('USERLIFES', user.vidas);
+                    localStorage.setItem('USERCOSTEVIDA', user.costeVida);
+                    return true;
+                }
+            } else {
+                console.log("No such document!");
+                return false;
+            }
+        }).catch(error => {
+            console.log("Error getting document:", error);
+            //Handle this situation the way you want
+        });
+
+}
+
+async function getMarker() {
+    const snapshot = await firebase.firestore().collection('users').get('gCzxIMmwMVYrr5NdSTk4')
+    return snapshot.docs.map(doc => doc.data());
 }
 
 function alFinalizar(error) {
@@ -132,8 +144,10 @@ $(function() {
             // alert("Error: Las contraseñas son distintas!");
             notiERR("Error: Las contraseñas son distintas!");
             
-        } else
-            firebase.auth().createUserWithEmailAndPassword(emailREG, passwordREG).then(exito).catch(alFinalizar);
+        } else{
+
+            firebase.auth().createUserWithEmailAndPassword(emailREG, passwordREG).then(console.log("CREATR A COUNT SUCCESSFULL")).catch(alFinalizar);
+        }
     });
     // $("#botonRegistro").click(function() {
     //     location.assign('registro.html');

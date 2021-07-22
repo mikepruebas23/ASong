@@ -1,0 +1,9 @@
+1 .- Mensaje cuando el usuario se logee con exito.
+2.- Reducir Lineas.
+3. Limpiar Codigo de comentarios.
+4.- Arregar los css mas ordenaros.
+5.- Guardar el Nombre de el usuario en la pantalla de puntos.
+6 .- Hacer un mensaje de cargando generico para cuando tarden las pantallas.
+
+# PRIORIDAD
+revisar el contador de segundos para detener los tiempos
