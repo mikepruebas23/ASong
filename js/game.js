@@ -115,7 +115,8 @@ function selectFrase2(value){
         
         $("#pmoney").html(USERMONEY += 1);
         $("#points").val(Puntos += 1);
-        new Audio('../src/acept.mp3').play();
+        // new Audio('../src/acept.mp3').play();
+        new Audio('https://github.com/mikepruebas23/ASong/blob/gh-pages/src/acept.mp3').play();
         // console.log("PUNTOS: ", Puntos);
         render(Puntos, iEvolve);
         $("#contadorDos").html(Puntos);
